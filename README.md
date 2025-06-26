@@ -55,10 +55,10 @@ g++ -std=c++11 -o pid_controller pid_controller.cpp
 
 ## Potential Extensions
 
-- Add integral windup protection by limiting the integral term.
-- Add output saturation limits to simulate actuator limits.
-- Integrate with real sensors and actuators (e.g., via ROS topics).
-- Implement tuning tools to optimize PID gains automatically.
+- Add integral windup protection by limiting the integral term
+- Add output saturation limits to simulate actuator limits
+- Integrate with real sensors and actuators (e.g., via ROS topics)
+- Implement tuning tools to optimize PID gains automatically
 
 ## References 
 
