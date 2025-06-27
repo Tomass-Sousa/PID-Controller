@@ -3,7 +3,7 @@
 ## Overview
 
 This project implements a basic **PID controller** in C++ to regulate a motor's speed.  
-The PID (Proportional-Integral-Derivative) controller is a classic feedback loop algorithm widely used in robotics and control systems for achieving stable and accurate control.
+The PID (Proportional-Integral-Derivative) controller is a classic feedback loop algorithm widely used in robotics and control systems for achieving stable and accurate control
 
 ---
 
