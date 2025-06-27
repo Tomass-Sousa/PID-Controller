@@ -1,67 +1,66 @@
-# PID Controller in C++
+# Régulateur PID en C++
 
-## Overview
+## Présentation
 
-This project implements a basic **PID controller** in C++ to regulate a motor's speed.  
-The PID (Proportional-Integral-Derivative) controller is a classic feedback loop algorithm widely used in robotics and control systems for achieving stable and accurate control.
-
----
-
-## How It Works
-
-### PID Components
-
-- **Proportional (P)**: Reacts proportionally to the current error (difference between desired setpoint and measured value).  
-- **Integral (I)**: Accumulates past errors to eliminate steady-state offset.  
-- **Derivative (D)**: Predicts future error trend based on the rate of change of the error, providing damping.
-
-### Algorithm Flow
-
-1. Measure the current value of the controlled variable (e.g., motor speed).
-2. Calculate the error: `error = setpoint - measured_value`.
-3. Compute the integral of the error over time.
-4. Calculate the derivative (rate of error change).
-5. Combine the three terms with their respective gains (kp, ki, kd) to produce the control output.
-6. Apply the control output to the system.
-7. Repeat at regular time intervals.
+Ce projet implémente un **régulateur PID** de base en C++ pour contrôler la vitesse d’un moteur.  
+Le contrôleur PID (Proportionnel-Intégral-Dérivatif) est un algorithme de régulation en boucle largement utilisé en robotique et en automatique pour obtenir un contrôle stable et précis.
 
 ---
 
-## Code Explanation
+## Fonctionnement
 
-- **Class `PIDController`**:  
-  Encapsulates PID parameters and internal state (previous error, integral sum, time tracking).  
-  The method `compute(setpoint, measured_value)` returns the control output based on the current error and elapsed time.
+### Composantes PID
 
-- **Time Handling**:  
-  Uses `std::chrono::steady_clock` to calculate precise elapsed time (`dt`) between successive calls for accurate integration and differentiation.
+- **Proportionnel (P)** : réagit proportionnellement à l’erreur actuelle.
+- **Intégral (I)** : cumule les erreurs passées pour éliminer les écarts persistants.
+- **Dérivatif (D)** : anticipe les tendances futures de l’erreur pour amortir la réponse.
 
-- **Integral Windup Consideration**:  
-  This basic implementation does not handle integral windup explicitly (where integral grows excessively). In real systems, clamping or resetting integral terms is recommended.
+### Logique de l'algorithme
 
-- **Example in `main()`**:  
-  Simulates a motor speed controlled by the PID output. The motor speed responds to the control input with some delay and damping.
+1. Mesurer la valeur actuelle (ex. : vitesse moteur).
+2. Calculer l’erreur : `erreur = consigne - mesure`.
+3. Intégrer l’erreur sur le temps.
+4. Calculer la dérivée de l’erreur.
+5. Combiner les trois termes (P, I, D) avec leurs gains (kp, ki, kd).
+6. Appliquer la commande résultante au système.
+7. Répéter périodiquement.
 
 ---
 
-## How to Compile and Run
+## Explication du code
 
-Make sure you have a C++11-compatible compiler.
+- **Classe `PIDController`** :  
+  Contient les paramètres PID, l’état interne et le calcul via `compute(consigne, mesure)`.
+
+- **Gestion du temps** :  
+  Utilise `std::chrono::steady_clock` pour calculer un `dt` précis entre appels successifs.
+
+- **Windup intégral** :  
+  Cette version n’intègre pas de protection contre l’accumulation excessive du terme intégral (à prévoir en cas réel).
+
+- **Exemple `main()`** :  
+  Simule une régulation de vitesse moteur avec réponse amortie et délais.
+
+---
+
+## Compilation et exécution
+
+Assurez-vous d’avoir un compilateur compatible C++11 :
 
 ```bash
 g++ -std=c++11 -o pid_controller pid_controller.cpp
 ./pid_controller
 ```
 
-## Potential Extensions
+## Extensions possibles
 
-- Add integral windup protection by limiting the integral term
-- Add output saturation limits to simulate actuator limits
-- Integrate with real sensors and actuators (e.g., via ROS topics)
-- Implement tuning tools to optimize PID gains automatically
+- Ajouter une limitation du terme intégral (anti-windup)
+- Ajouter des bornes de sortie (saturation d’actionneurs)
+- Intégrer des capteurs/actionneurs réels (via ROS, par exemple)
+- Automatiser le réglage des gains PID
 
-## References 
+## Références 
 
-- PID Controller Wikipedia
-- Modern Control Systems textbooks
-- Robotics control lectures and tutorials
+- Wikipédia – Contrôleur PID
+- Ouvrages de systèmes de contrôle modernes
+- Cours et tutoriels en robotique et automatisme
