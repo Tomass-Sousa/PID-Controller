@@ -72,7 +72,7 @@ int main() {
         std::cout << "Step " << i << ": Motor input = " << motor_input
                   << ", Speed = " << current_speed << std::endl;
 
-        // Simulate wait (e.g., 100ms)
+        // Simulate wait e.g., 100ms
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
 
