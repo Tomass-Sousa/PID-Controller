@@ -3,7 +3,7 @@
 ## Présentation
 
 Ce projet implémente un **régulateur PID** de base en C++ pour contrôler la vitesse d’un moteur.  
-Le contrôleur PID (Proportionnel-Intégral-Dérivatif) est un algorithme de régulation en boucle largement utilisé en robotique et en automatique pour obtenir un contrôle stable et précis
+Le contrôleur PID (Proportionnel-Intégral-Dérivatif) est un algorithme de régulation en boucle largement utilisé en robotique et en automatique pour obtenir un contrôle stable et précis.
 
 ---
 
